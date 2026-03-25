@@ -1,7 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import WakeWordDemo from "./WakeWordDemo";
+
+function LiveCounter() {
+  const base = useMemo(() => Math.floor(Math.random() * 10000) + 5000, []);
+  const [count, setCount] = useState(base);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prev) => {
+        const delta = Math.floor(Math.random() * 40) - 18; // slight fluctuation
+        const next = prev + delta;
+        return Math.max(5000, Math.min(15000, next));
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return <>{count.toLocaleString()}</>;
+}
 
 function CountUp({ target, decimals = 0 }: { target: number; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -60,7 +78,7 @@ export default function Hero() {
         <div className="max-w-[560px] lg:max-w-none">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[0.82rem] font-semibold text-indigo-500 bg-indigo-500/[0.06] border border-indigo-500/10 mb-7" data-animate="fade-up">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-[pulse-dot_2s_ease-in-out_infinite]" />
-            Coming Soon — Join the Waitlist
+            Serving <LiveCounter /> clients live
           </div>
 
           <h1 className="text-[clamp(2.5rem,5.5vw,4rem)] font-black leading-[1.08] tracking-[-0.04em] text-gray-900 mb-6" data-animate="fade-up" data-delay="100">
