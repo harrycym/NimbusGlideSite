@@ -56,7 +56,7 @@ function CountUp({ target, decimals = 0 }: { target: number; decimals?: number }
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       {/* Background orbs + grid */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute w-[600px] h-[600px] rounded-full bg-indigo-500/[0.12] -top-[200px] -right-[100px] blur-[80px] animate-[float_20s_ease-in-out_infinite]" />

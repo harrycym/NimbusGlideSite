@@ -256,56 +256,80 @@ export default function Features() {
       {/* ============================================================
           SECTION 5 — 50+ Languages & Privacy (combined)
           ============================================================ */}
-      <section className="py-28">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center max-w-[700px] mx-auto mb-16" data-animate="fade-up">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-emerald-600 bg-emerald-500/[0.08] mb-6">Global & Secure</span>
-            <h2 className="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight tracking-[-0.03em] text-gray-900 mb-6">
-              50+ languages.<br /><span className="gradient-text">Zero data retained.</span>
-            </h2>
-            <p className="text-lg text-gray-500 leading-relaxed">
-              Switch between languages mid-sentence — NimbusGlide detects and adapts in real-time. And your words never leave your machine unless you want them to.
-            </p>
-          </div>
+      <section className="py-28 relative overflow-hidden">
+        {/* Dark background with gradient */}
+        <div className="absolute inset-0 bg-gray-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(99,102,241,0.15),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(16,185,129,0.1),transparent_60%)]" />
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {/* Languages card */}
-            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-200" data-animate="fade-up">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-6">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/><path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/></svg>
+        <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            {/* Languages — left side */}
+            <div data-animate="fade-up">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/><path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/></svg>
+                </div>
+                <span className="text-4xl font-black text-white tracking-tight">50+</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Every language. Every accent.</h3>
-              <p className="text-base text-gray-500 leading-relaxed mb-6">
-                Speak in English, switch to Spanish mid-sentence, throw in some Mandarin — NimbusGlide follows along. Full support for dialects and regional accents.
+              <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">Every language. Every accent.</h3>
+              <p className="text-base text-gray-400 leading-relaxed mb-8">
+                Switch mid-sentence between English, Spanish, Mandarin — NimbusGlide follows along seamlessly. Full support for dialects and regional accents.
               </p>
-              <div className="flex flex-wrap gap-1.5">
-                {LANGUAGES.slice(0, 24).map((lang) => (
-                  <span key={lang} className="px-2.5 py-1 rounded-full text-[0.7rem] font-medium text-gray-500 bg-white border border-gray-200">{lang}</span>
+
+              {/* Language cloud */}
+              <div className="flex flex-wrap gap-2">
+                {LANGUAGES.slice(0, 18).map((lang, i) => (
+                  <span
+                    key={lang}
+                    className={`px-3 py-1.5 rounded-full text-[0.75rem] font-medium border transition-all ${
+                      i < 3
+                        ? "bg-indigo-500/20 border-indigo-500/30 text-indigo-300"
+                        : i < 6
+                        ? "bg-white/[0.06] border-white/10 text-gray-300"
+                        : "bg-white/[0.03] border-white/[0.06] text-gray-500"
+                    }`}
+                  >
+                    {lang}
+                  </span>
                 ))}
-                <span className="px-2.5 py-1 rounded-full text-[0.7rem] font-bold text-indigo-500 bg-indigo-50 border border-indigo-200">+28 more</span>
+                <span className="px-3 py-1.5 rounded-full text-[0.75rem] font-bold bg-gradient-to-r from-indigo-500/20 to-violet-500/20 border border-indigo-500/30 text-indigo-300">
+                  +34 more
+                </span>
               </div>
             </div>
 
-            {/* Privacy card */}
-            <div className="p-8 rounded-2xl bg-gray-50 border border-gray-200" data-animate="fade-up" data-delay="100">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            {/* Privacy — right side */}
+            <div data-animate="fade-up" data-delay="150">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <span className="text-4xl font-black text-white tracking-tight">0</span>
+                <span className="text-lg font-medium text-gray-500 mt-1">bytes retained</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Your words. Your device. Period.</h3>
-              <p className="text-base text-gray-500 leading-relaxed mb-6">
-                On-device processing for sensitive content. End-to-end encryption when cloud processing is used. Zero data retention — we don&apos;t store, sell, or train on your dictation. Ever.
+              <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">Your words never leave your device.</h3>
+              <p className="text-base text-gray-400 leading-relaxed mb-8">
+                On-device processing for sensitive content. End-to-end encryption when cloud is used. We don&apos;t store, sell, or train on your dictation. Ever.
               </p>
-              <div className="space-y-3">
+
+              {/* Privacy checklist */}
+              <div className="space-y-4">
                 {[
-                  "On-device processing available",
-                  "End-to-end encryption",
-                  "Zero data retention",
-                  "SOC 2 Type II compliant",
-                  "HIPAA ready",
+                  { label: "On-device processing", desc: "Sensitive content stays local" },
+                  { label: "End-to-end encryption", desc: "AES-256 for cloud processing" },
+                  { label: "Zero data retention", desc: "Nothing stored after processing" },
+                  { label: "SOC 2 Type II", desc: "Audited and certified" },
+                  { label: "HIPAA ready", desc: "Safe for medical dictation" },
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span className="text-sm text-gray-600">{item}</span>
+                  <div key={item.label} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                      <span className="text-sm font-semibold text-white">{item.label}</span>
+                      <span className="text-sm text-gray-500 ml-2">{item.desc}</span>
+                    </div>
                   </div>
                 ))}
               </div>
