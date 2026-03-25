@@ -1,0 +1,13 @@
+{
+  "name": "nimbusglide-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/site",
+    "dev:site": "npm run dev --workspace=apps/site",
+    "build": "npm run build --workspace=apps/site",
+    "build:site": "npm run build --workspace=apps/site"
+  }
+}
