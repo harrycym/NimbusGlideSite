@@ -7,7 +7,7 @@ const EXAMPLES = [
     label: "Email",
     before: "hey team just wanted to let you know the project deadline got moved to next friday so make sure the budget numbers are finalized before then and oh yeah don't forget we have a meeting on wednesday",
     after: "draft this as an email",
-    output: "Hi team,\n\nQuick update — the project deadline has been moved to next Friday. Please make sure all budget numbers are finalized before then.\n\nAlso, a reminder that we have a meeting this Wednesday.\n\nBest regards",
+    output: "Dear Team,\n\nI hope you're all doing well. I wanted to share a quick update regarding our project timeline.\n\nThe deadline has been moved to next Friday. Please ensure that all budget numbers are finalized before then so we can stay on track.\n\nAdditionally, a reminder that we have a team meeting scheduled for this Wednesday.\n\nPlease don't hesitate to reach out if you have any questions.\n\nSincerely,\nHarry",
   },
   {
     label: "Medical",

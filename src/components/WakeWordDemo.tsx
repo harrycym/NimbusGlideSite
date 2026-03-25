@@ -4,9 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const SCENARIOS = [
   {
-    before: "Hey I need you to go to the mall and pick up the package from the front desk",
+    before: "Hey I need you to go to the mall and pick up the package from the front desk and make sure you get there before five because they close early on weekends",
     after: "draft this as an email",
-    output: "Hi,\n\nCould you please stop by the mall and pick up the package from the front desk?\n\nThanks!",
+    output: "Dear James,\n\nI hope this message finds you well. Could you please stop by the mall and pick up the package from the front desk? Please make sure to arrive before 5:00 PM, as they close early on weekends.\n\nThank you for your help — I really appreciate it.\n\nSincerely,\nHarry",
   },
   {
     before: "I want to build a website that looks incredible and I need you to one shot this in clean code",
