@@ -175,6 +175,14 @@ export default function LiveDemo() {
                           <p className="text-xs font-semibold text-emerald-500 uppercase tracking-wider mb-1.5">Filler Removal + Corrections</p>
                           <p className="text-sm text-gray-600 leading-relaxed">&ldquo;Hey can we meet tonight at 7pm, actually scratch that, let&apos;s meet at 7pm at the uhmm pizza place near my house, no near your house.&rdquo;</p>
                         </div>
+                        <div className="rounded-xl bg-gray-50 border border-gray-200 p-4 hover:border-indigo-200 transition-colors">
+                          <p className="text-xs font-semibold text-violet-500 uppercase tracking-wider mb-1.5">Email Drafting</p>
+                          <p className="text-sm text-gray-600 leading-relaxed">&ldquo;So basically we need to push the deadline back by like two weeks because um the vendor hasn&apos;t delivered the API docs yet and uh we can&apos;t really start integration without them. <strong className="text-indigo-500">NimbusGlide</strong>, draft this as a professional email.&rdquo;</p>
+                        </div>
+                        <div className="rounded-xl bg-gray-50 border border-gray-200 p-4 hover:border-indigo-200 transition-colors">
+                          <p className="text-xs font-semibold text-cyan-500 uppercase tracking-wider mb-1.5">AI Prompt Writing</p>
+                          <p className="text-sm text-gray-600 leading-relaxed">&ldquo;I want like a landing page hero section with um a big headline and a subtitle and a call to action button, make it modern and clean. <strong className="text-indigo-500">NimbusGlide</strong>, turn this into an AI prompt.&rdquo;</p>
+                        </div>
                       </div>
                     </div>
                   )}
