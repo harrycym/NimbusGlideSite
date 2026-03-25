@@ -5,7 +5,6 @@ import ScrollAnimator from "@/components/ScrollAnimator";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import Features from "@/components/Features";
-import InteractiveDemo from "@/components/InteractiveDemo";
 import LiveDemo from "@/components/LiveDemo";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
@@ -23,7 +22,6 @@ export default function Home() {
         <Hero />
         <SocialProof />
         <Features />
-        <InteractiveDemo />
         <LiveDemo />
         <Pricing />
         <Testimonials />

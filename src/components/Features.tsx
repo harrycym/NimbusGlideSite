@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import InteractiveDemo from "./InteractiveDemo";
 
 const ORBIT_ITEMS = [
   { label: "Email", bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-500" },
@@ -168,6 +169,9 @@ export default function Features() {
           </div>
         </div>
       </section>
+
+      {/* Demo — right after the steps */}
+      <InteractiveDemo />
 
       {/* ============================================================
           SECTION 2 — Context-Aware AI
