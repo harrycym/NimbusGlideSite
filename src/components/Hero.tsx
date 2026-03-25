@@ -1,20 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import WakeWordDemo from "./WakeWordDemo";
 
 function LiveCounter() {
-  const base = useMemo(() => Math.floor(Math.random() * 10000) + 5000, []);
-  const [count, setCount] = useState(base);
+  const getCount = () => {
+    const now = Date.now() / 1000;
+    // Layered sine waves for natural ebb and flow, deterministic from clock
+    const slow = Math.sin(now / 600) * 2000;       // ~10min cycle
+    const mid = Math.sin(now / 120) * 500;          // ~2min cycle
+    const fast = Math.sin(now / 30) * 80;           // ~30s ripple
+    return Math.round(8500 + slow + mid + fast);
+  };
+
+  const [count, setCount] = useState(getCount);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        const delta = Math.floor(Math.random() * 40) - 18; // slight fluctuation
-        const next = prev + delta;
-        return Math.max(5000, Math.min(15000, next));
-      });
-    }, 3000);
+    const interval = setInterval(() => setCount(getCount()), 3000);
     return () => clearInterval(interval);
   }, []);
 
