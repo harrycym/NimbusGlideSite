@@ -9,7 +9,7 @@ const SCENARIOS = [
     output: "Dear James,\n\nI hope this message finds you well. Could you please stop by the mall and pick up the package from the front desk? Please make sure to arrive before 5:00 PM, as they close early on weekends.\n\nThank you for your help — I really appreciate it.\n\nSincerely,\nHarry",
   },
   {
-    before: "I want to build a website that looks incredible and I need you to one shot this in clean code",
+    before: "I want to build a website that looks incredible and I need you to one shot this in Claude Code",
     after: "make this an AI prompt",
     output: "Build a complete, production-ready SaaS landing page using Next.js and Tailwind CSS in a single pass.\n\nRequirements:\n- Hero with bold headline and CTA\n- Scroll-triggered animations\n- Pricing section (3 tiers)\n- Waitlist email capture\n- Fully responsive, clean design",
   },

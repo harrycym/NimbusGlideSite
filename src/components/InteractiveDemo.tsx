@@ -17,7 +17,7 @@ const EXAMPLES = [
   },
   {
     label: "AI Prompt",
-    before: "i want to build a website that looks incredible and i need you to one shot this in clean code make it a landing page for a saas product with animations and a waitlist",
+    before: "i want to build a website that looks incredible and i need you to one shot this in Claude Code make it a landing page for a saas product with animations and a waitlist",
     after: "make this an AI prompt",
     output: "Build a complete, production-ready SaaS landing page in a single pass using Next.js and Tailwind CSS.\n\nRequirements:\n- Hero section with bold headline, subtitle, and CTA button\n- Smooth scroll-triggered animations (fade-up on viewport entry)\n- Feature grid with icon cards and hover effects\n- Pricing section with 3 tiers (Free, Pro, Enterprise)\n- Waitlist email capture form with success state\n- Fully responsive (mobile-first)\n- Clean, minimal design with strategic color accents\n- No external dependencies beyond Next.js and Tailwind\n\nOutput the complete code in one shot. Do not split into multiple files unless necessary.",
   },
