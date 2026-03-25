@@ -84,6 +84,7 @@ export default function LiveDemo() {
       const resp = await fetch(`${WORKER_URL}/demo`, {
         method: "POST",
         body: formData,
+        credentials: "include",
       });
 
       const data = await resp.json();
