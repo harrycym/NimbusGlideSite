@@ -161,6 +161,23 @@ export default function LiveDemo() {
                       "Tap to record (30s max, 5 tries per hour)"
                     )}
                   </p>
+
+                  {/* Example prompts */}
+                  {state === "idle" && (
+                    <div className="mt-8 pt-6 border-t border-gray-100">
+                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Try saying something like:</p>
+                      <div className="space-y-3 text-left">
+                        <div className="rounded-xl bg-gray-50 border border-gray-200 p-4 hover:border-indigo-200 transition-colors">
+                          <p className="text-xs font-semibold text-indigo-500 uppercase tracking-wider mb-1.5">Wake Word + Command</p>
+                          <p className="text-sm text-gray-600 leading-relaxed">&ldquo;Hey, I want you to try this new thing. Um, whatever, man. And also, <strong className="text-indigo-500">NimbusGlide</strong>. Yo, make what I just said really happy.&rdquo;</p>
+                        </div>
+                        <div className="rounded-xl bg-gray-50 border border-gray-200 p-4 hover:border-indigo-200 transition-colors">
+                          <p className="text-xs font-semibold text-emerald-500 uppercase tracking-wider mb-1.5">Filler Removal + Corrections</p>
+                          <p className="text-sm text-gray-600 leading-relaxed">&ldquo;Hey can we meet tonight at 7pm, actually scratch that, let&apos;s meet at 7pm at the uhmm pizza place near my house, no near your house.&rdquo;</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
