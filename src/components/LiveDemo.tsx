@@ -10,6 +10,7 @@ export default function LiveDemo() {
   const [state, setState] = useState<DemoState>("idle");
   const [transcript, setTranscript] = useState("");
   const [polished, setPolished] = useState("");
+  const [wakeDetected, setWakeDetected] = useState(false);
   const [error, setError] = useState("");
   const [seconds, setSeconds] = useState(0);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -95,6 +96,7 @@ export default function LiveDemo() {
 
       setTranscript(data.transcript || "");
       setPolished(data.polished || "");
+      setWakeDetected(data.wakeWordDetected || false);
       setState("done");
     } catch {
       setError("Failed to connect. Please try again.");
@@ -106,6 +108,7 @@ export default function LiveDemo() {
     setState("idle");
     setTranscript("");
     setPolished("");
+    setWakeDetected(false);
     setError("");
     setSeconds(0);
   };
@@ -187,8 +190,11 @@ export default function LiveDemo() {
                     <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-violet-500 mb-3">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                       NimbusGlide output
+                      {wakeDetected && (
+                        <span className="ml-2 px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-600 text-[0.7rem] font-bold normal-case tracking-normal">Wake word detected</span>
+                      )}
                     </div>
-                    <p className="text-base text-gray-800 leading-relaxed font-medium">{polished}</p>
+                    <p className="text-base text-gray-800 leading-relaxed font-medium whitespace-pre-wrap">{polished}</p>
                   </div>
 
                   <button

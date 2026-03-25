@@ -198,7 +198,7 @@ export default function WakeWordDemo() {
         </div>
       </div>
 
-      <div className="absolute bottom-20 -right-8 flex items-center gap-3 px-4 py-3.5 bg-white rounded-xl border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] z-20 animate-[card-float_6s_ease-in-out_infinite_2s] max-lg:hidden">
+      <div className="absolute -bottom-6 -right-14 flex items-center gap-3 px-4 py-3.5 bg-white rounded-xl border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] z-20 animate-[card-float_6s_ease-in-out_infinite_2s] max-lg:hidden">
         <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shrink-0">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
@@ -208,7 +208,7 @@ export default function WakeWordDemo() {
         </div>
       </div>
 
-      <div className="absolute -bottom-3 left-10 flex items-center gap-3 px-4 py-3.5 bg-white rounded-xl border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] z-20 animate-[card-float_6s_ease-in-out_infinite_4s] max-lg:hidden">
+      <div className="absolute -bottom-14 left-10 flex items-center gap-3 px-4 py-3.5 bg-white rounded-xl border border-gray-100 shadow-[0_12px_40px_rgba(0,0,0,0.08)] z-20 animate-[card-float_6s_ease-in-out_infinite_4s] max-lg:hidden">
         <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-red-500 flex items-center justify-center shrink-0">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
         </div>

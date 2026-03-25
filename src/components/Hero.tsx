@@ -78,9 +78,9 @@ export default function Hero() {
           </p>
 
           <div className="flex gap-4 mb-12 flex-wrap" data-animate="fade-up" data-delay="300">
-            <a href="#waitlist" className="inline-flex items-center gap-2 px-7 py-3.5 text-[0.95rem] font-semibold text-white bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full shadow-[0_2px_12px_rgba(99,102,241,0.25)] hover:shadow-[0_4px_20px_rgba(99,102,241,0.35)] hover:-translate-y-0.5 transition-all">
+            <a href="#try-it" className="inline-flex items-center gap-2 px-7 py-3.5 text-[0.95rem] font-semibold text-white bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full shadow-[0_2px_12px_rgba(99,102,241,0.25)] hover:shadow-[0_4px_20px_rgba(99,102,241,0.35)] hover:-translate-y-0.5 transition-all">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-              Get Early Access
+              Try Live
             </a>
             <a href="#demo" className="inline-flex items-center gap-2 px-7 py-3.5 text-[0.95rem] font-semibold text-gray-700 border border-gray-200 rounded-full hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-500/[0.04] transition-all">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
