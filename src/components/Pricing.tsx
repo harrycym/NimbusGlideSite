@@ -53,7 +53,7 @@ export default function Pricing() {
           {PLANS.map((plan, i) => (
             <div
               key={plan.name}
-              className={`relative bg-white border rounded-3xl p-10 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] ${
+              className={`glow-card glow-border relative bg-white border rounded-3xl p-10 transition-all duration-400 hover-lift ${
                 plan.featured
                   ? "border-indigo-400 shadow-[0_12px_40px_rgba(0,0,0,0.08),0_0_0_1px_rgba(99,102,241,0.1)] md:scale-[1.02]"
                   : "border-gray-200"

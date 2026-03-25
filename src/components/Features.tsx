@@ -77,8 +77,7 @@ const LANGUAGES = [
 function GlassCard({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
     <div className={`group relative rounded-2xl overflow-hidden ${className}`} data-animate="fade-up" data-delay={delay}>
-      {/* Card */}
-      <div className="relative rounded-2xl bg-white border border-gray-200 hover:border-indigo-200 p-8 h-full transition-all duration-500 shadow-sm hover:shadow-md">
+      <div className="glow-card glow-border relative rounded-2xl bg-white border border-gray-200 hover:border-indigo-200 p-8 h-full transition-all duration-500 shadow-sm hover:shadow-lg hover-lift" data-tilt>
         {children}
       </div>
     </div>
@@ -156,7 +155,7 @@ export default function Features() {
                 },
               ].map((step, i) => (
                 <div key={step.label} className="group" data-animate="fade-up" data-delay={i * 120}>
-                  <div className="bg-white rounded-2xl border border-gray-200 p-7 transition-all duration-300 hover:border-indigo-200 hover:shadow-md hover:-translate-y-1 relative overflow-hidden">
+                  <div className="glow-card glow-border bg-white rounded-2xl border border-gray-200 p-7 transition-all duration-300 hover:border-indigo-200 hover:shadow-lg hover-lift relative" data-tilt>
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-indigo-500/[0.02] to-transparent pointer-events-none" />
                     <div className="relative z-10 mb-5">{step.icon}</div>
                     <span className={`relative z-10 inline-block text-[0.68rem] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full border mb-3 ${step.labelColor}`}>{step.label}</span>

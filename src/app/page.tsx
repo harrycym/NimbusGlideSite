@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import ParticleCanvas from "@/components/ParticleCanvas";
 import CursorGlow from "@/components/CursorGlow";
 import ScrollAnimator from "@/components/ScrollAnimator";
+import InteractiveEffects from "@/components/InteractiveEffects";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import Features from "@/components/Features";
@@ -17,6 +18,7 @@ export default function Home() {
       <CursorGlow />
       <ParticleCanvas />
       <ScrollAnimator />
+      <InteractiveEffects />
       <Navbar />
       <main>
         <Hero />

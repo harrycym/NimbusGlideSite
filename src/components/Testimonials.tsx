@@ -43,7 +43,7 @@ export default function Testimonials() {
           {REVIEWS.map((r, i) => (
             <div
               key={r.name}
-              className="p-8 bg-white border border-gray-100 rounded-2xl transition-all duration-400 hover:border-indigo-500/15 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1"
+              className="glow-card glow-border p-8 bg-white border border-gray-100 rounded-2xl transition-all duration-400 hover-lift"
               data-animate="fade-up"
               data-delay={i * 100}
             >
