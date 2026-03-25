@@ -4,17 +4,19 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const SCENARIOS = [
   {
-    // Words before wake word are normal, wake word is "NimbusGlide", everything after is purple
     before: "Hey I need you to go to the mall and pick up the package from the front desk",
     after: "draft this as an email",
+    output: "Hi,\n\nCould you please stop by the mall and pick up the package from the front desk?\n\nThanks!",
   },
   {
-    before: "I want a function that takes a list of numbers and returns only the prime ones",
+    before: "I want to build a website that looks incredible and I need you to one shot this in clean code",
     after: "make this an AI prompt",
+    output: "Build a complete, production-ready SaaS landing page using Next.js and Tailwind CSS in a single pass.\n\nRequirements:\n- Hero with bold headline and CTA\n- Scroll-triggered animations\n- Pricing section (3 tiers)\n- Waitlist email capture\n- Fully responsive, clean design",
   },
   {
     before: "So the main takeaway from the meeting was that we need to ship by March and the budget got cut by twenty percent",
     after: "format as meeting notes",
+    output: "Meeting Notes\n━━━━━━━━━━━━\n• Deadline: Ship by March\n• Budget: Reduced by 20%\n• Action: Reassess scope to fit new constraints",
   },
 ];
 
@@ -27,7 +29,8 @@ interface TypedWord {
 export default function WakeWordDemo() {
   const [scenarioIdx, setScenarioIdx] = useState(0);
   const [words, setWords] = useState<TypedWord[]>([]);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [outputText, setOutputText] = useState("");
+  const [phase, setPhase] = useState<"idle" | "typing" | "output">("idle");
   const timeoutRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const clearTimeouts = useCallback(() => {
@@ -44,8 +47,9 @@ export default function WakeWordDemo() {
   const runScenario = useCallback(
     (sIdx: number) => {
       clearTimeouts();
-      setIsPlaying(true);
+      setPhase("typing");
       setWords([]);
+      setOutputText("");
 
       const scenario = SCENARIOS[sIdx];
       const beforeWords = scenario.before.split(" ");
@@ -64,7 +68,7 @@ export default function WakeWordDemo() {
       // Small pause before wake word
       delay += 300;
 
-      // Type "NimbusGlide" as highlighted wake word
+      // "NimbusGlide," highlighted
       addTimeout(() => {
         setWords((prev) => [...prev, { text: "NimbusGlide,", purple: true, isWakeWord: true }]);
       }, delay);
@@ -78,10 +82,17 @@ export default function WakeWordDemo() {
         delay += 70 + Math.random() * 50;
       });
 
-      // Hold for a beat, then mark done
-      delay += 3000;
+      // Instant output after typing
+      delay += 400;
       addTimeout(() => {
-        setIsPlaying(false);
+        setOutputText(scenario.output);
+        setPhase("output");
+      }, delay);
+
+      // Hold, then done
+      delay += 4000;
+      addTimeout(() => {
+        setPhase("idle");
       }, delay);
     },
     [addTimeout, clearTimeouts]
@@ -98,7 +109,7 @@ export default function WakeWordDemo() {
 
   // Auto-cycle scenarios
   useEffect(() => {
-    if (!isPlaying) {
+    if (phase === "idle" && outputText) {
       const next = (scenarioIdx + 1) % SCENARIOS.length;
       const timer = setTimeout(() => {
         setScenarioIdx(next);
@@ -106,7 +117,7 @@ export default function WakeWordDemo() {
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [isPlaying, scenarioIdx, runScenario]);
+  }, [phase, outputText, scenarioIdx, runScenario]);
 
   // Waveform bars
   const [waveHeights, setWaveHeights] = useState<number[]>(Array(40).fill(4));
@@ -160,8 +171,8 @@ export default function WakeWordDemo() {
             ))}
           </div>
 
-          {/* Transcription area — single continuous text stream */}
-          <div className="min-h-[120px] border-t border-gray-100 pt-4">
+          {/* Transcription area */}
+          <div className="min-h-[60px] border-t border-gray-100 pt-4">
             {words.length > 0 ? (
               <p className="text-base leading-relaxed">
                 {words.map((w, i) => (
@@ -178,12 +189,30 @@ export default function WakeWordDemo() {
                     )}
                   </span>
                 ))}
-                <span className="inline-block w-0.5 h-5 bg-violet-500 ml-1 align-text-bottom cursor-blink" />
+                {phase === "typing" && (
+                  <span className="inline-block w-0.5 h-5 bg-violet-500 ml-1 align-text-bottom cursor-blink" />
+                )}
               </p>
             ) : (
               <p className="text-gray-300 text-sm italic">Listening for speech...</p>
             )}
           </div>
+
+          {/* Output — appears instantly */}
+          {outputText && (
+            <div className="mt-4 pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-widest text-violet-500">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  Output
+                </div>
+                <span className="text-[0.7rem] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">0.2s</span>
+              </div>
+              <div className="bg-violet-50 border border-violet-100 rounded-lg p-3.5">
+                <pre className="text-sm leading-relaxed text-gray-800 whitespace-pre-wrap font-sans">{outputText}</pre>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
