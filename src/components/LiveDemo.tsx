@@ -95,7 +95,25 @@ export default function LiveDemo() {
         return;
       }
 
-      setTranscript(data.transcript || "");
+      const raw = (data.transcript || "").trim();
+
+      // Whisper hallucinates short phrases on silence — catch them
+      const HALLUCINATIONS = [
+        "thank you", "thanks for watching", "thanks for listening",
+        "bye", "goodbye", "see you", "you", "the end", "thanks",
+        "subscribe", "like and subscribe", "peace",
+      ];
+      const isHallucination = raw.length < 30 && HALLUCINATIONS.some(
+        (h) => raw.toLowerCase().replace(/[.,!?]/g, "").trim() === h
+      );
+
+      if (!raw || isHallucination) {
+        setError("We didn\u2019t catch any speech. Try speaking a bit louder or longer!");
+        setState("error");
+        return;
+      }
+
+      setTranscript(raw);
       setPolished(data.polished || "");
       setWakeDetected(data.wakeWordDetected || false);
       setState("done");
@@ -162,8 +180,8 @@ export default function LiveDemo() {
                     )}
                   </p>
 
-                  {/* Example prompts */}
-                  {state === "idle" && (
+                  {/* Example prompts — visible in idle and recording */}
+                  {(state === "idle" || state === "recording") && (
                     <div className="mt-8 pt-6 border-t border-gray-100">
                       <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Try saying something like:</p>
                       <div className="space-y-3 text-left">
