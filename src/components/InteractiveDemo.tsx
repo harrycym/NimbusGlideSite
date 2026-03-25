@@ -141,31 +141,16 @@ export default function InteractiveDemo() {
       delay += 65 + Math.random() * 55;
     });
 
-    // Pause after typing, show "processing"
-    delay += 800;
+    // Brief pause, then slam the output instantly
+    delay += 400;
     addTimeout(() => {
       setMicActive(false);
-      setPhase("processing");
-    }, delay);
-
-    // After a beat, start typing the output
-    delay += 1200;
-    addTimeout(() => {
+      setOutputText(ex.output);
       setPhase("output");
     }, delay);
 
-    // Type output character by character
-    delay += 100;
-    const outputChars = ex.output.split("");
-    outputChars.forEach((ch) => {
-      addTimeout(() => {
-        setOutputText((prev) => prev + ch);
-      }, delay);
-      delay += 8 + Math.random() * 10;
-    });
-
     // Done
-    delay += 2500;
+    delay += 4000;
     addTimeout(() => {
       setPhase("idle");
     }, delay);
@@ -218,28 +203,21 @@ export default function InteractiveDemo() {
                 )}
               </div>
 
-              {/* Processing spinner */}
-              {phase === "processing" && (
-                <div className="flex items-center gap-3 mt-6 pt-6 border-t border-gray-100">
-                  <div className="w-5 h-5 border-2 border-gray-200 border-t-violet-500 rounded-full animate-spin" />
-                  <span className="text-sm text-violet-500 font-medium">NimbusGlide is formatting...</span>
-                </div>
-              )}
-
-              {/* Output result */}
+              {/* Output result — appears instantly */}
               {(phase === "output" || (phase === "idle" && outputText)) && outputText && (
                 <div className="mt-6 pt-6 border-t border-gray-100">
-                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-violet-500 mb-4">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                    NimbusGlide Output
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-violet-500">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                      NimbusGlide Output
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">0.2s</span>
+                      <span className="text-xs text-gray-400 font-medium">50% faster than competitors</span>
+                    </div>
                   </div>
                   <div className="bg-violet-50 border border-violet-200 rounded-xl p-5">
-                    <pre className="text-[0.95rem] leading-relaxed text-gray-800 whitespace-pre-wrap font-sans">
-                      {outputText}
-                      {phase === "output" && (
-                        <span className="inline-block w-0.5 h-5 bg-violet-500 ml-0.5 align-text-bottom cursor-blink" />
-                      )}
-                    </pre>
+                    <pre className="text-[0.95rem] leading-relaxed text-gray-800 whitespace-pre-wrap font-sans">{outputText}</pre>
                   </div>
                 </div>
               )}
