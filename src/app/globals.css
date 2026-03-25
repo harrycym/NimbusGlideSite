@@ -111,3 +111,89 @@ html {
 .mode-animate-in {
   animation: mode-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* --- Gradient Border Card --- */
+.gradient-border {
+  position: relative;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--gradient-angle, 0deg),
+    #6366f1,
+    #8b5cf6,
+    #06b6d4,
+    #6366f1
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gradient-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+/* --- Glass Card --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Glow Hover --- */
+.glow-hover {
+  position: relative;
+}
+
+.glow-hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.15),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-hover:hover::after {
+  opacity: 1;
+}
+
+/* --- Gradient Rotate Keyframes --- */
+@keyframes gradient-rotate {
+  from { --gradient-angle: 0deg; }
+  to { --gradient-angle: 360deg; }
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* --- Shimmer Keyframes --- */
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* --- Animate Gradient Border Utility --- */
+.animate-gradient-border {
+  animation: gradient-rotate 4s linear infinite;
+}
