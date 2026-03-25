@@ -1,5 +1,69 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+const ORBIT_ITEMS = [
+  { label: "Email", bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-600" },
+  { label: "AI Prompt", bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-600" },
+  { label: "Notes", bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-600" },
+  { label: "Slack", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-600" },
+  { label: "Tweet", bg: "bg-pink-50", border: "border-pink-200", text: "text-pink-600" },
+  { label: "Code", bg: "bg-cyan-50", border: "border-cyan-200", text: "text-cyan-600" },
+];
+
+function OrbitVisual() {
+  const [angle, setAngle] = useState(0);
+
+  useEffect(() => {
+    let animId: number;
+    function tick() {
+      setAngle((prev) => prev + 0.3);
+      animId = requestAnimationFrame(tick);
+    }
+    animId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  const radius = 140;
+
+  return (
+    <div className="relative w-72 h-72 flex items-center justify-center">
+      {/* Rings */}
+      <div className="absolute inset-0 rounded-full border border-indigo-500/10" />
+      <div className="absolute inset-[15%] rounded-full border border-violet-500/10" />
+      <div className="absolute inset-[30%] rounded-full border border-cyan-500/10" />
+
+      {/* Core */}
+      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-[0_0_60px_rgba(99,102,241,0.3)] z-10">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+      </div>
+
+      {/* Orbiting labels */}
+      {ORBIT_ITEMS.map((item, i) => {
+        const itemAngle = (angle + (i * 360) / ORBIT_ITEMS.length) * (Math.PI / 180);
+        const x = Math.cos(itemAngle) * radius;
+        const y = Math.sin(itemAngle) * radius;
+
+        return (
+          <div
+            key={item.label}
+            className={`absolute px-3.5 py-1.5 rounded-full ${item.bg} border ${item.border} text-xs font-bold ${item.text} shadow-sm whitespace-nowrap z-20`}
+            style={{
+              transform: `translate(${x}px, ${y}px)`,
+              left: "50%",
+              top: "50%",
+              marginLeft: "-30px",
+              marginTop: "-14px",
+            }}
+          >
+            {item.label}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 const LANGUAGES = [
   "English", "Spanish", "Mandarin", "Hindi", "Arabic", "French", "Portuguese", "German",
   "Japanese", "Korean", "Italian", "Russian", "Dutch", "Turkish", "Polish", "Vietnamese",
@@ -45,21 +109,9 @@ export default function Features() {
               </div>
             </div>
 
-            {/* Visual — animated orbiting modes */}
+            {/* Visual — real orbiting modes */}
             <div className="flex items-center justify-center" data-animate="fade-up" data-delay="150">
-              <div className="relative w-64 h-64 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full border border-indigo-500/15 animate-[spin-slow_25s_linear_infinite]" />
-                <div className="absolute inset-[12.5%] rounded-full border border-violet-500/15 animate-[spin-slow_18s_linear_infinite_reverse]" />
-                <div className="absolute inset-[25%] rounded-full border border-cyan-500/15 animate-[spin-slow_15s_linear_infinite]" />
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-[0_0_60px_rgba(99,102,241,0.3)]">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
-                </div>
-                <div className="absolute -top-3 right-4 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-600 animate-[card-float_4s_ease-in-out_infinite] shadow-sm">Email</div>
-                <div className="absolute -bottom-3 left-0 px-4 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-xs font-bold text-violet-600 animate-[card-float_4s_ease-in-out_infinite_1.5s] shadow-sm">AI Prompt</div>
-                <div className="absolute top-1/2 -right-16 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-600 animate-[card-float_4s_ease-in-out_infinite_3s] shadow-sm">Notes</div>
-                <div className="absolute top-1/3 -left-14 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-bold text-amber-600 animate-[card-float_4s_ease-in-out_infinite_2s] shadow-sm">Slack</div>
-                <div className="absolute -bottom-1 right-8 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-200 text-xs font-bold text-pink-600 animate-[card-float_4s_ease-in-out_infinite_4s] shadow-sm">Tweet</div>
-              </div>
+              <OrbitVisual />
             </div>
           </div>
         </div>
