@@ -5,6 +5,7 @@ import ScrollAnimator from "@/components/ScrollAnimator";
 import InteractiveEffects from "@/components/InteractiveEffects";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
+import ContextAware from "@/components/ContextAware";
 import Features from "@/components/Features";
 import LiveDemo from "@/components/LiveDemo";
 import Pricing from "@/components/Pricing";
@@ -23,6 +24,7 @@ export default function Home() {
       <main>
         <Hero />
         <SocialProof />
+        <ContextAware />
         <Features />
         <LiveDemo />
         <Pricing />

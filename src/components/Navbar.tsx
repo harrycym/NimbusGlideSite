@@ -52,9 +52,6 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex gap-3 items-center">
-            <a href="#waitlist" className="px-5 py-2.5 text-sm font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-full transition-all">
-              Sign In
-            </a>
             <a href="#waitlist" className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full shadow-[0_2px_12px_rgba(99,102,241,0.25)] hover:shadow-[0_4px_20px_rgba(99,102,241,0.35)] hover:-translate-y-0.5 transition-all">
               Download for {isMac ? "Mac" : "Windows"}
             </a>
