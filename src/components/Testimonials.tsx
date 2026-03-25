@@ -33,9 +33,9 @@ export default function Testimonials() {
     <section className="py-28">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center max-w-[640px] mx-auto mb-16" data-animate="fade-up">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-indigo-500 bg-indigo-500/[0.08] mb-5">Early Feedback</span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-indigo-500 bg-indigo-500/[0.08] mb-5">Testimonials</span>
           <h2 className="text-[clamp(2rem,5vw,3.2rem)] font-extrabold leading-tight tracking-[-0.03em] text-gray-900 mb-5">
-            What beta testers<br /><span className="gradient-text">are saying.</span>
+            What our clients<br /><span className="gradient-text">are saying.</span>
           </h2>
         </div>
 
