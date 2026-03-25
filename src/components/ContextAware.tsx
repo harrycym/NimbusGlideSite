@@ -9,7 +9,7 @@ export default function ContextAware() {
           <div className="order-2 lg:order-1 space-y-4" data-animate="fade-up" data-delay="150">
             <div className="rounded-xl bg-white border border-gray-200 shadow-sm p-5">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Other tools</p>
-              <p className="text-base text-gray-500">&ldquo;The doctor said to <span className="text-red-500 font-medium line-through">reed</span> the results before the <span className="text-red-500 font-medium line-through">patience</span> arrive&rdquo;</p>
+              <p className="text-base text-gray-500">&ldquo;<span className="text-red-500 font-medium line-through">Um</span> the doctor said to <span className="text-red-500 font-medium line-through">reed</span> the results before, <span className="text-red-500 font-medium line-through">uh</span>, the <span className="text-red-500 font-medium line-through">patience</span> arrive&rdquo;</p>
             </div>
             <div className="rounded-xl bg-white border border-emerald-200 shadow-sm p-5">
               <p className="text-xs font-semibold text-emerald-500 uppercase tracking-wider mb-2">NimbusGlide</p>
